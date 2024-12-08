@@ -11,7 +11,7 @@ import google.generativeai as genai
 load_dotenv()
 
 # Google API Key for Generative AI
-GOOGLE_API_KEY = "AIzaSyC-SUkGhMrRePRIXFnrYi4CnZqr-WoVDR0"
+GOOGLE_API_KEY = "YOUR-API-KEY"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 def get_gemini_response(input,pdf_cotent,prompt):
@@ -84,6 +84,15 @@ if submit1:
     if uploaded_files is not None:
         pdf_content = input_pdf_setup(uploaded_files)
         response = get_gemini_response(input_prompt1, pdf_content, input_text)
+        st.subheader("The Response is")
+        st.write(response)
+    else:
+        st.write("Please upload the resume.")
+
+elif submit2:
+    if uploaded_files is not None:
+        pdf_content = input_pdf_setup(uploaded_files)
+        response = get_gemini_response(input_prompt2, pdf_content, input_text)
         st.subheader("The Response is")
         st.write(response)
     else:
